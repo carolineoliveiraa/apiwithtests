@@ -21,5 +21,5 @@ public class UserResource {
         return ResponseEntity.ok().body(service.findById(id));
     }
 
-    
+
 }
