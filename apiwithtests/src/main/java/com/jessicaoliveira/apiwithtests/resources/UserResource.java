@@ -20,4 +20,6 @@ public class UserResource {
     public ResponseEntity<User> findById(@PathVariable Integer id){
         return ResponseEntity.ok().body(service.findById(id));
     }
+
+    
 }
