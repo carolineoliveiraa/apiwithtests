@@ -46,4 +46,6 @@ public class UserResource {
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newUser.getId()).toUri();
         return ResponseEntity.created(uri).body(mapper.map(newUser, UserDTO.class));
     }
+
+    
 }
