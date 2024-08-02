@@ -38,14 +38,15 @@ public class UserResource {
     @PostMapping
     public ResponseEntity<UserDTO> create(@RequestBody UserDTO obj) {
         User newUser = null;
-        try {
-            newUser = service.create(obj);
-        } catch (DatatypeConfigurationException e) {
-            throw new RuntimeException(e);
-        }
+        newUser = service.create(obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newUser.getId()).toUri();
         return ResponseEntity.created(uri).body(mapper.map(newUser, UserDTO.class));
     }
 
-    
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<UserDTO> update(@PathVariable Integer id, @RequestBody UserDTO obj){
+        obj.setId(id);
+        User newObj = service.update(obj);
+        return ResponseEntity.ok().body(mapper.map(newObj, UserDTO.class));
+    }
 }
