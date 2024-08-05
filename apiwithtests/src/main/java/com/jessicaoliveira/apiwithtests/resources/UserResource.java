@@ -49,4 +49,6 @@ public class UserResource {
         User newObj = service.update(obj);
         return ResponseEntity.ok().body(mapper.map(newObj, UserDTO.class));
     }
+
+    
 }
