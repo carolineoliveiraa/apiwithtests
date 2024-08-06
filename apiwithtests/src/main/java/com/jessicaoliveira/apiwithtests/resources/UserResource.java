@@ -50,5 +50,5 @@ public class UserResource {
         return ResponseEntity.ok().body(mapper.map(newObj, UserDTO.class));
     }
 
-    
+
 }
