@@ -28,7 +28,7 @@ class UserServiceImplTest {
     public static final String NAME = "jessica";
     public static final String EMAIL = "jessica@mail.com";
     public static final String PASSWORD = "123";
-    public static final String OBJETO_NAO_ENCONTRADO = "Objeto não encontrado";
+    public static final String OBJETO_NAO_ENCONTRADO = UserServiceImplTest.OBJETO_NAO_ENCONTRADO;
     public static final int INDEX = 0;
     public static final String E_MAIL_JA_CADASTRADO_NO_SISTEMA = "E-mail já cadastrado no sistema";
     @InjectMocks
@@ -159,5 +159,14 @@ class UserServiceImplTest {
     }
 
     @Test
-    void 
+    void deleteWithObjectNotFoundException(){
+        when(repository.findById(anyInt())).thenThrow(new ObjectNotFoundException(UserServiceImplTest.OBJETO_NAO_ENCONTRADO));
+
+        try {
+            service.delete(ID);
+        }catch (Exception ex){
+            assertEquals(ObjectNotFoundException.class, ex.getClass());
+            assertEquals(UserServiceImplTest.OBJETO_NAO_ENCONTRADO, ex.getMessage());
+        }
+    }
 }
