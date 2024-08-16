@@ -72,11 +72,12 @@ class UserResourceTest {
 
     @Test
     void findAll() {
-        
+
     }
 
     @Test
     void create() {
+        
     }
 
     @Test
