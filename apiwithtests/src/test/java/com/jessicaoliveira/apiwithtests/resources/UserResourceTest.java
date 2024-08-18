@@ -82,10 +82,11 @@ class UserResourceTest {
 
     @Test
     void update() {
-        
+
     }
 
     @Test
     void delete() {
+        
     }
 }
